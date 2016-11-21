@@ -40,7 +40,7 @@ namespace sudoku_algorithms
         private bool checkFormat()
         {
             string fileContentsString = System.IO.File.ReadAllText(@puzzleFile);
-            Regex regexp = new Regex(@"[^1-9\-\s]*", RegexOptions.Singleline);
+            Regex regexp = new Regex(@"[^0-9\-\s]*", RegexOptions.Singleline);
             MatchCollection matches = regexp.Matches(fileContentsString);
             List<String> errorList = new List<String>();
             for (int ii = 0; ii < matches.Count; ii++)

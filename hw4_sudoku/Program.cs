@@ -34,7 +34,7 @@ namespace hw4_sudoku
                         algorithmMethod.solvePuzzle();
                         break;
                     case "c":
-                        algorithmMethod = new sudokuBacktrackingAlgorithm();
+                        algorithmMethod = new sudokuRecursiveAlgorithm();
                         algorithmMethod.solvePuzzle();
                         break;
                     case "x":

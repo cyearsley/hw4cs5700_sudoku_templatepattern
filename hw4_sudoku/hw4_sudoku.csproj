@@ -46,7 +46,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sudokuAlgorithm.cs" />
-    <Compile Include="sudokuBacktrackingAlgorithm.cs" />
+    <Compile Include="sudokuRecursiveAlgorithm.cs" />
     <Compile Include="sudokuDancingLinksAlgorithm.cs" />
     <Compile Include="sudokuNaiveDancingLinksAlgorithm.cs" />
   </ItemGroup>
@@ -54,6 +54,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="16x16.txt" />
     <Content Include="4x4.txt" />
     <Content Include="puzzleWithBadData.txt" />
     <Content Include="puzzleWithBadFormat.txt" />
