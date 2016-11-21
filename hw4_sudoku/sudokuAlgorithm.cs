@@ -10,7 +10,6 @@ namespace sudoku_algorithms
     public abstract class sudokuAlgorithm
     {
         protected int numberOfSolutions;
-        protected List<List<int>> solvedPuzzle;
         protected List<List<int>> rawPuzzle;
         protected String puzzleFile;
         protected abstract void executeSudokuAlgorithm(List<List<int>> puzzle);
@@ -18,7 +17,6 @@ namespace sudoku_algorithms
         public sudokuAlgorithm()
         {
             this.numberOfSolutions = 0;
-            this.solvedPuzzle = new List<List<int>>();
         }
 
         public void solvePuzzle()
@@ -27,9 +25,7 @@ namespace sudoku_algorithms
             {
                 if (checkFormat())
                 {
-                    read();
                     executeSudokuAlgorithm(rawPuzzle);
-                    print();
                 }
                 else
                 {
@@ -112,7 +108,7 @@ namespace sudoku_algorithms
                     }
                 }
             }
-            Console.WriteLine("The count of List[0] is: " + puzzleTableString[0].Count);
+            Console.WriteLine("The count of List[0] is: " + rawPuzzle[0].Count);
             for (int ii = 0; ii < rawPuzzle[0].Count; ii++)
             {
                 for (int jj = 0; jj < rawPuzzle[0].Count; jj++)
@@ -124,24 +120,32 @@ namespace sudoku_algorithms
             return true;
         }
 
-        private void read()
-        {
-            // TODO: from the puzzleFile, read the contents and build the puzzle.
-            this.rawPuzzle = new List<List<int>>();
-        }
-
-        protected void print()
+        protected void print(List<List<int>> puzzle)
         {
             Console.WriteLine("print the output to a file");
             if (numberOfSolutions == 1)
             {
-                Console.WriteLine("You have solved the puzzle!");
+                Console.WriteLine("You have solved the puzzle! There existed only ONE solution for this puzzle!");
                 Console.WriteLine("The solution has been saved to the file: solution.txt");
-                // TODO: print the solution to a file.
-            }
-            else
-            {
-                // TODO: handle logic to determine why there was no solution.
+                System.IO.StreamWriter file = new System.IO.StreamWriter(@"../../../solution.txt");
+                for (int ii = 0; ii < puzzle.Count; ii++)
+                {
+                    file.Write(ii + " ");
+                }
+                file.WriteLine(" ");
+                for (int ii = 0; ii < puzzle.Count; ii++)
+                {
+                    file.Write("==");
+                }
+                for (int ii = 0; ii < puzzle.Count; ii++)
+                {
+                    file.WriteLine(" ");
+                    for (int jj = 0; jj < puzzle[0].Count; jj++)
+                    {
+                        file.Write(puzzle[ii][jj] + " ");
+                    }
+                }
+                file.Close();
             }
         }
 

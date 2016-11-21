@@ -11,21 +11,34 @@ namespace sudoku_algorithms
         protected override void executeSudokuAlgorithm(List<List<int>> sudoku)
         {
             solve(sudoku, 0);
+            if (numberOfSolutions == 0)
+            {
+                Console.WriteLine("There were no solutions for the specified puzzle!");
+            }
+            else if (numberOfSolutions > 1)
+            {
+                Console.WriteLine("There was more than one solution - making this puzzle invalid!");
+            }
+
+            return;
         }
 
         // Start Reference: https://rafal.io/posts/solving-sudoku-with-dancing-links.html
         // ============================================================================== //
         private void solve(List<List<int>> sudoku, int idx)
         {
-            int size = sudoku[0].Count;
+            if (numberOfSolutions > 1)
+            {
+                return;
+            }
+
+            int size = sudoku.Count;
             if (idx == size * size)
             {
                 if (isSolution(sudoku))
                 {
-                    Console.WriteLine("Found a solution via very naive algorithm: ");
-                    //print(sudoku);
-                    print();
-                    Console.WriteLine("\n");
+                    numberOfSolutions++;
+                    print(sudoku);
                 }
             }
             else
@@ -47,12 +60,12 @@ namespace sudoku_algorithms
                 }
             }
         }
-        
+
         // Returns true if and only if sudoku is a valid solved sudoku board
         private bool isSolution(List<List<int>> sudoku)
         {
-            int N = rawPuzzle[0].Count;
-            int side = (int)Math.Floor(Math.Sqrt(rawPuzzle[0].Count));
+            int N = rawPuzzle.Count;
+            int side = (int)Math.Floor(Math.Sqrt(rawPuzzle.Count));
             bool[] mask = new bool[N + 1];
 
             // Check rows
