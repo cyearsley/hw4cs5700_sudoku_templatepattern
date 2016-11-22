@@ -25,6 +25,12 @@ namespace sudoku_algorithms
 
         // Start Reference: https://rafal.io/posts/solving-sudoku-with-dancing-links.html
         // ============================================================================== //
+
+        // ============================================================================== //
+        //
+        // S O L V E ( )
+        //
+        // ============================================================================== //
         private void solve(List<List<int>> sudoku, int idx)
         {
             if (numberOfSolutions > 1)
@@ -35,7 +41,7 @@ namespace sudoku_algorithms
             int size = sudoku.Count;
             if (idx == size * size)
             {
-                if (isSolution(sudoku))
+                if (checkIfValid(sudoku))
                 {
                     numberOfSolutions++;
                     print(sudoku);
@@ -61,8 +67,12 @@ namespace sudoku_algorithms
             }
         }
 
-        // Returns true if and only if sudoku is a valid solved sudoku board
-        private bool isSolution(List<List<int>> sudoku)
+        // ============================================================================== //
+        //
+        // C H E C K  I F  V A L I D ( )
+        //
+        // ============================================================================== //
+        private bool checkIfValid(List<List<int>> sudoku)
         {
             int N = rawPuzzle.Count;
             int side = (int)Math.Floor(Math.Sqrt(rawPuzzle.Count));

@@ -25,6 +25,12 @@ namespace sudoku_algorithms
 
         // Start Reference: https://rafal.io/posts/solving-sudoku-with-dancing-links.html
         // ============================================================================== //
+
+        // ============================================================================== //
+        //
+        // S O L V E ( )
+        //
+        // ============================================================================== //
         private void solve(List<List<int>> sudoku, int ind)
         {
             int S = sudoku.Count;
@@ -46,7 +52,7 @@ namespace sudoku_algorithms
                     // we are positioned on something we need to fill in. Try all possibilities
                     for (int i = 1; i <= sudoku.Count; i++)
                     {
-                        if (consistent(sudoku, row, col, i))
+                        if (checkIfValid(sudoku, row, col, i))
                         {
                             sudoku[row][col] = i;
                             solve(sudoku, ind + 1);
@@ -59,8 +65,12 @@ namespace sudoku_algorithms
 
         }
 
-        // Check whether putting "c" into index "ind" leaves the board in a consistent state
-        private bool consistent(List<List<int>> board, int row, int col, int c)
+        // ============================================================================== //
+        //
+        // C H E C K  I F  V A L I D ( )
+        //
+        // ============================================================================== //
+        private bool checkIfValid(List<List<int>> board, int row, int col, int c)
         {
             int S = board.Count;
             // check columns/rows

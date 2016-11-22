@@ -84,8 +84,6 @@ namespace sudoku_algorithms
                 return false;
             }
 
-            Console.WriteLine("Solving the following puzzle: ");
-
             rawPuzzle = new List<List<int>>();
             List<List<String>> puzzleTableString = new List<List<String>>();
             for (int ii = 0; ii < fileContentsArray.Length; ii++)
@@ -108,41 +106,55 @@ namespace sudoku_algorithms
                     }
                 }
             }
-            Console.WriteLine("The count of List[0] is: " + rawPuzzle[0].Count);
-            for (int ii = 0; ii < rawPuzzle[0].Count; ii++)
-            {
-                for (int jj = 0; jj < rawPuzzle[0].Count; jj++)
-                {
-                    Console.Write(rawPuzzle[ii][jj] + " ");
-                }
-                Console.WriteLine("\n");
-            }
+
+            //Console.WriteLine("Solving the following puzzle: ");
+            //for (int ii = 0; ii < rawPuzzle[0].Count; ii++)
+            //{
+            //    for (int jj = 0; jj < rawPuzzle[0].Count; jj++)
+            //    {
+            //        Console.Write(rawPuzzle[ii][jj] + " ");
+            //    }
+            //    Console.WriteLine("\n");
+            //}
             return true;
         }
 
         protected void print(List<List<int>> puzzle)
         {
-            Console.WriteLine("print the output to a file");
             if (numberOfSolutions == 1)
             {
-                Console.WriteLine("You have solved the puzzle! There existed only ONE solution for this puzzle!");
-                Console.WriteLine("The solution has been saved to the file: solution.txt");
+                Console.WriteLine("\nYou have solved the puzzle! There existed only ONE solution for this puzzle!");
+                Console.WriteLine("The solution has been saved to the file: solution.txt\n");
                 System.IO.StreamWriter file = new System.IO.StreamWriter(@"../../../solution.txt");
-                for (int ii = 0; ii < puzzle.Count; ii++)
+                for (int ii = 1; ii < puzzle.Count+1; ii++)
                 {
-                    file.Write(ii + " ");
+                    if (ii > 9)
+                    {
+                        file.Write(ii + "   ");
+                    }
+                    else
+                    {
+                        file.Write(" " + ii + "   ");
+                    }
                 }
                 file.WriteLine(" ");
                 for (int ii = 0; ii < puzzle.Count; ii++)
                 {
-                    file.Write("==");
+                    file.Write("=====");
                 }
                 for (int ii = 0; ii < puzzle.Count; ii++)
                 {
                     file.WriteLine(" ");
                     for (int jj = 0; jj < puzzle[0].Count; jj++)
                     {
-                        file.Write(puzzle[ii][jj] + " ");
+                        if (puzzle[ii][jj] > 9)
+                        {
+                            file.Write(puzzle[ii][jj] + " | ");
+                        }
+                        else
+                        {
+                            file.Write(" " + puzzle[ii][jj] + " | ");
+                        }
                     }
                 }
                 file.Close();
