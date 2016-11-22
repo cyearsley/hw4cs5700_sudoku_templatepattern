@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using file_handler;
 
 namespace sudoku_algorithms
 {
@@ -11,7 +12,7 @@ namespace sudoku_algorithms
     {
         protected int numberOfSolutions;
         protected List<List<int>> rawPuzzle;
-        protected String puzzleFile;
+        private fileHandler fh;
         protected abstract void executeSudokuAlgorithm(List<List<int>> puzzle);
         protected abstract void solve(List<List<int>> puzzle, int a, int b);
         protected abstract bool checkIfValid(List<List<int>> puzzle, int a, int b, int c);
@@ -19,11 +20,12 @@ namespace sudoku_algorithms
         public sudokuAlgorithm()
         {
             this.numberOfSolutions = 0;
+            this.fh = new fileHandler();
         }
 
         public void solvePuzzle()
         {
-            if (getFileName())
+            if (this.fh.getFileName())
             {
                 if (checkFormat())
                 {
@@ -41,7 +43,7 @@ namespace sudoku_algorithms
 
         private bool checkFormat()
         {
-            string fileContentsString = System.IO.File.ReadAllText(@puzzleFile);
+            string fileContentsString = fh.readFileAsString();
             Regex regexp = new Regex(@"[^0-9\-\s]*", RegexOptions.Singleline);
             MatchCollection matches = regexp.Matches(fileContentsString);
             List<String> errorList = new List<String>();
@@ -54,7 +56,7 @@ namespace sudoku_algorithms
             }
 
             int[] acceptedSizes = { 4, 9, 16, 25, 36 };
-            string[] fileContentsArray = System.IO.File.ReadAllLines(@puzzleFile);
+            string[] fileContentsArray = fh.readFileAsArray();
             if (!acceptedSizes.Contains(fileContentsArray.Length))
             {
                 errorList.Add("Invalid Format - Wrong number of rows!\n "+
@@ -161,25 +163,6 @@ namespace sudoku_algorithms
                 }
                 file.Close();
             }
-        }
-
-        private bool getFileName()
-        {
-            Console.WriteLine("Enter the file name that contains the sudoku puzzle.");
-            Console.Write("Enter: ");
-            String userInput = Console.ReadLine();
-
-            try
-            {
-                string[] fileContents = System.IO.File.ReadAllLines(@"../../" + userInput);
-            }
-            catch(Exception exp)
-            {
-                return false;
-            }
-
-            this.puzzleFile = "../../" + userInput;
-            return true;
         }
     }
 }
