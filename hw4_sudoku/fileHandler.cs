@@ -10,6 +10,11 @@ namespace file_handler
     {
         private String puzzleFile;
 
+        public fileHandler()
+        {
+            this.puzzleFile = "empty";
+        }
+
         public String getPuzzleFile()
         {
             return this.puzzleFile;
@@ -36,11 +41,21 @@ namespace file_handler
 
         public String readFileAsString()
         {
+            if (puzzleFile == "empty")
+            {
+                Console.WriteLine("You need to specify a puzzle file first!");
+                return "empty";
+            }
             return System.IO.File.ReadAllText(@puzzleFile);
         }
 
         public String[] readFileAsArray()
         {
+            if (puzzleFile == "empty")
+            {
+                Console.WriteLine("You need to specify a puzzle file first!");
+                return new String[] { };
+            }
             return System.IO.File.ReadAllLines(@puzzleFile);
         }
     }
