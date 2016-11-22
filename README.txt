@@ -4,6 +4,8 @@ Usage:
 	1) Using puzzle files.
 		i) In order to be able to use .txt files as puzzle files, they must be located in the root directory
 		of the project (it should be in the same location as the solution.txt and hw4_sudoku.sln files).
+		During step 3 (when you are selecting the algorithm), you will have to specify
+		this puzzle file (eg. superAwesomeSudokuPuzzle.txt).
 
 	2) Using the program.
 		i) When you start up the program you will be prompted to use 1 of 3 algorithms.
