@@ -31,7 +31,7 @@ namespace sudoku_algorithms
         // S O L V E ( )
         //
         // ============================================================================== //
-        private void solve(List<List<int>> sudoku, int idx)
+        protected override void solve(List<List<int>> sudoku, int idx, int a = 0)
         {
             if (numberOfSolutions > 1)
             {
@@ -72,7 +72,7 @@ namespace sudoku_algorithms
         // C H E C K  I F  V A L I D ( )
         //
         // ============================================================================== //
-        private bool checkIfValid(List<List<int>> sudoku)
+        protected override bool checkIfValid(List<List<int>> sudoku, int a = 0, int b = 0, int c = 0)
         {
             int N = rawPuzzle.Count;
             int side = (int)Math.Floor(Math.Sqrt(rawPuzzle.Count));

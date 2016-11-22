@@ -37,7 +37,7 @@ namespace sudoku_algorithms
         // S O L V E ( )
         //
         // ============================================================================== //
-        private void solve(List<List<int>> puzzle, int x = 0, int y = 0)
+        protected override void solve(List<List<int>> puzzle, int x = 0, int y = 0)
         {
             int size = puzzle.Count;
             int currentValue = puzzle[1][0];
@@ -115,7 +115,7 @@ namespace sudoku_algorithms
         // C H E C K  I F  V A L I D ( )
         //
         // ============================================================================== //
-        private bool checkIfValid(List<List<int>> puzzle, int x, int y, int num)
+        protected override bool checkIfValid(List<List<int>> puzzle, int x, int y, int num)
         {
             int size = puzzle.Count;
             int divisionSize = (int)Math.Sqrt(size);

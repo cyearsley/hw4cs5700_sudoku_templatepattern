@@ -13,6 +13,8 @@ namespace sudoku_algorithms
         protected List<List<int>> rawPuzzle;
         protected String puzzleFile;
         protected abstract void executeSudokuAlgorithm(List<List<int>> puzzle);
+        protected abstract void solve(List<List<int>> puzzle, int a, int b);
+        protected abstract bool checkIfValid(List<List<int>> puzzle, int a, int b, int c);
 
         public sudokuAlgorithm()
         {

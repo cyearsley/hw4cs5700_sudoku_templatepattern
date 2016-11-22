@@ -31,7 +31,7 @@ namespace sudoku_algorithms
         // S O L V E ( )
         //
         // ============================================================================== //
-        private void solve(List<List<int>> sudoku, int ind)
+        protected override void solve(List<List<int>> sudoku, int ind, int b = 0)
         {
             int S = sudoku.Count;
             if (ind == S * S)
@@ -70,7 +70,7 @@ namespace sudoku_algorithms
         // C H E C K  I F  V A L I D ( )
         //
         // ============================================================================== //
-        private bool checkIfValid(List<List<int>> board, int row, int col, int c)
+        protected override bool checkIfValid(List<List<int>> board, int row, int col, int c)
         {
             int S = board.Count;
             // check columns/rows
