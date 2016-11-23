@@ -9,4 +9,3 @@ C:\Users\Caleb\Documents\School\Homework\fall_2016\cs5700\hw4_sudoku\hw4_sudoku\
 C:\Users\Caleb\Documents\School\Homework\fall_2016\cs5700\hw4_sudoku\hw4_sudoku\obj\Debug\hw4_sudoku.pdb
 C:\Users\Caleb\Documents\School\Homework\fall_2016\cs5700\hw4_sudoku\hw4_sudoku\bin\Debug\hw4_sudoku.exe
 C:\Users\Caleb\Documents\School\Homework\fall_2016\cs5700\hw4_sudoku\hw4_sudoku\bin\Debug\hw4_sudoku.pdb
-C:\Users\Caleb\Documents\School\Homework\fall_2016\cs5700\hw4_sudoku\hw4_sudoku\obj\Debug\hw4_sudoku.csprojResolveAssemblyReference.cache

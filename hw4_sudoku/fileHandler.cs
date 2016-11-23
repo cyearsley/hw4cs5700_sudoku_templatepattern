@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace file_handler
 {
-    class fileHandler
+    public class fileHandler
     {
         private String puzzleFile;
 
@@ -20,11 +20,15 @@ namespace file_handler
             return this.puzzleFile;
         }
 
-        public bool getFileName()
+        public bool getFileName(String isTest = "false")
         {
             Console.WriteLine("Enter the file name that contains the sudoku puzzle.");
             Console.Write("Enter: ");
-            String userInput = Console.ReadLine();
+            String userInput = isTest;
+            if (isTest == "false")
+            {
+                userInput = Console.ReadLine();
+            }
 
             try
             {

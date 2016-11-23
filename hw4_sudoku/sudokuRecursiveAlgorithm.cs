@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sudoku_algorithms
 {
-    class sudokuRecursiveAlgorithm : sudokuAlgorithm
+    public class sudokuRecursiveAlgorithm : sudokuAlgorithm
     {
         List<List<List<int>>> listOfSolutions = new List<List<List<int>>> { };
 

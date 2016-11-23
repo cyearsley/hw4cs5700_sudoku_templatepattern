@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sudoku_algorithms
 {
-    class sudokuNaiveDancingLinksAlgorithm : sudokuAlgorithm
+    public class sudokuNaiveDancingLinksAlgorithm : sudokuAlgorithm
     {
         protected override void executeSudokuAlgorithm(List<List<int>> sudoku)
         {

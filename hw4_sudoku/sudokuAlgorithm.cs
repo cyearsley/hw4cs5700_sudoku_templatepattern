@@ -23,10 +23,14 @@ namespace sudoku_algorithms
             this.fh = new fileHandler();
         }
 
-        public void solvePuzzle()
+        public bool solvePuzzle(String testFileName = "")
         {
-            if (this.fh.getFileName())
+            if (testFileName != "" || this.fh.getFileName())
             {
+                if (testFileName != "")
+                {
+                    fh.getFileName(testFileName);
+                }
                 if (checkFormat())
                 {
                     executeSudokuAlgorithm(rawPuzzle);
@@ -34,11 +38,14 @@ namespace sudoku_algorithms
                 else
                 {
                     Console.WriteLine("The puzzle given by this file does NOT have an appropriate format!");
+                    return false;
                 }
             } else
             {
                 Console.WriteLine("There was a problem identifying the file you specified!");
+                return false;
             }
+            return true;
         }
 
         private bool checkFormat()
